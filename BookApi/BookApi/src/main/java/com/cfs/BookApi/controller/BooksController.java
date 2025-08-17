@@ -24,9 +24,12 @@ public class BooksController
     }
 
     @PostMapping
-    public ResponseEntity<Books> getBooks(@RequestBody Books book)
+    public ResponseEntity<List<Books>> getBooks(@RequestBody List<Books> book)
     {
-        booksetDB.put(book.getId(),book);
+        for(Books cnt : book)
+        {
+            booksetDB.put(cnt.getId(), cnt);
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 
