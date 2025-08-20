@@ -1,5 +1,7 @@
 package com.cds.Tracker.API.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Tracker
@@ -8,9 +10,10 @@ public class Tracker
     private String title;
     private String description;
     private String status;
-    private String dueDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date dueDate;
 
-    public Tracker(long id, String title, String description, String status, String dueDate) {
+    public Tracker(long id, String title, String description, String status, Date dueDate) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -38,7 +41,7 @@ public class Tracker
         return status;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
@@ -58,7 +61,7 @@ public class Tracker
         this.status = status;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 }
